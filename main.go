@@ -51,6 +51,24 @@ func main() {
 		fmt.Println(xoBoard[1])
 		fmt.Println(xoBoard[2])
 
+		// did someone win
+
+		for i := 0; i < 3; i++ {
+			// check row || column
+			if xoBoard[i][0] == xoBoard[i][1] && xoBoard[i][1] == xoBoard[i][2] && xoBoard[i][2] == player ||
+				xoBoard[0][i] == xoBoard[1][i] && xoBoard[1][i] == xoBoard[2][i] && xoBoard[2][i] == player {
+				fmt.Println("Game Over - Winner is Player: ", player)
+				// need to exit out of loop and game
+				return
+			}
+		}
+
+		if xoBoard[0][0] == xoBoard[1][1] && xoBoard[1][1] == xoBoard[2][2] && xoBoard[2][2] == player ||
+			xoBoard[0][2] == xoBoard[1][1] && xoBoard[1][1] == xoBoard[2][0] && xoBoard[2][0] == player {
+			fmt.Println("Game Over - Winner is Player: ", player)
+			return
+		}
+
 		// swap players
 		if player == "x" {
 			player = "o"
